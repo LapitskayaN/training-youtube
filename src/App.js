@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import CardList from "./components/CardList"
+import CurrentVideo from "./components/CurrentVideo"
+import data from './data'
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor (props ) {
+    super(props);
+    this.state = {
+    pickedMovie:data[0]}
+    this.handleOnclick=this.handleOnclick.bind(this)
+  }
+
+   handleOnclick (movieTitle) {
+    const findMoviyByTitle = data.find( element => element.name === movieTitle )
+    this.setState({pickedMovie: findMoviyByTitle })
+   }
+
+  render() {
+    const {pickedMovie}=this.state;
+    const handleOnclick=this.handleOnclick;
+    return (
+      <div className="App">
+        <CurrentVideo currentVideo = {pickedMovie} />
+        <CardList data={data}
+        handleOnclick={handleOnclick}
+               
+        />
+      </div>
+    )
+  }
 }
 
-export default App;
+ 
+
