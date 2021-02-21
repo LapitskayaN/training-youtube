@@ -30,8 +30,6 @@ export default class CurrentVideo  extends React.Component {
         })
     }
 
-
-
     render() {
         const {currentVideo}=this.props;
 

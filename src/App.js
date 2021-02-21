@@ -4,27 +4,49 @@ import CardList from "./components/CardList"
 import CurrentVideo from "./components/CurrentVideo"
 import data from './data'
 import React, { Component } from 'react'
+import SearchBar from './components/SearchBar'
 
 export default class App extends Component {
   constructor (props ) {
     super(props);
     this.state = {
-    pickedMovie:data[0]}
+    pickedMovie:data[0],
+    movieNameForSearch:""
+    }
     this.handleOnclick=this.handleOnclick.bind(this)
+    this.handleSort=this.handleSort.bind(this)
   }
+
+
 
    handleOnclick (movieTitle) {
     const findMoviyByTitle = data.find( element => element.name === movieTitle )
     this.setState({pickedMovie: findMoviyByTitle })
    }
 
+   handleSort(movieName ){
+     this.setState({
+      ...this.state,
+      movieNameForSearch:  movieName
+     })
+   }
+
+
+
+
   render() {
-    const {pickedMovie}=this.state;
+    const {pickedMovie,movieNameForSearch }=this.state;
+    const handleSort=this.handleSort;
     const handleOnclick=this.handleOnclick;
-    return (
+    const dataF=data.filter((oneMovie) =>{ return oneMovie.name
+      .includes(movieNameForSearch) } )
+     return (
       <div className="App">
+        <div>
+        <SearchBar handleSort={ handleSort}/>
         <CurrentVideo currentVideo = {pickedMovie} />
-        <CardList data={data}
+        </div>
+        <CardList dataF={dataF}
         handleOnclick={handleOnclick}
 
         />
