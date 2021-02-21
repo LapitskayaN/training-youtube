@@ -9,13 +9,13 @@ export default class CardList extends React.Component {
     }
 
     render() {
-         const {handleOnclick, dataF}=this.props;
+         const {handleOnclick, dataF, isFiltered,showAll} =this.props;
 
         return (
             <div >
+            {isFiltered ?  <button onClick={()=>showAll() }>Show all movie </button> : null}
             {dataF.map((element,index)=>
-       <Card {...element} key={index} handleOnclick={handleOnclick} />)}
-
+             <Card {...element} key={index} handleOnclick={handleOnclick} />)}
             </div>
         )
     }

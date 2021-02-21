@@ -10,7 +10,7 @@ export default class SearchBar extends Component {
         return (
             <div>
                 <input type="text" placeholder='Search' onChange={(e) => handleSort(e.target.value)}/>
-                <button>Search me</button>
+
 
             </div>
         )

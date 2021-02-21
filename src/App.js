@@ -15,6 +15,7 @@ export default class App extends Component {
     }
     this.handleOnclick=this.handleOnclick.bind(this)
     this.handleSort=this.handleSort.bind(this)
+    this.showAll = this.showAll.bind(this);
   }
 
 
@@ -31,6 +32,11 @@ export default class App extends Component {
      })
    }
 
+   showAll() {
+    this.setState({
+      movieNameForSearch: ""
+    })
+  }
 
 
 
@@ -48,7 +54,8 @@ export default class App extends Component {
         </div>
         <CardList dataF={dataF}
         handleOnclick={handleOnclick}
-
+        isFiltered={data.length!==dataF.length}
+        showAll={this.showAll}
         />
       </div>
     )
