@@ -26,12 +26,12 @@ export default class App extends Component {
         <CurrentVideo currentVideo = {pickedMovie} />
         <CardList data={data}
         handleOnclick={handleOnclick}
-               
+
         />
       </div>
     )
   }
 }
 
- 
+
 
