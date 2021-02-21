@@ -56,6 +56,7 @@ export default class App extends Component {
         handleOnclick={handleOnclick}
         isFiltered={data.length!==dataF.length}
         showAll={this.showAll}
+        isEmpty={dataF.length == 0}
         />
       </div>
     )
